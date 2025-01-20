@@ -1,0 +1,122 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 7cm;
+  min-height: 100vh; /* Ensures the container takes up at least full height */
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-title {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.date-filter {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.date-filter input {
+  margin: 10px;
+}
+
+.info-boxes {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: #151a20;
+}
+
+.info-box {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  width: 20%;
+  text-align: center;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  flex-grow: 1; /* Ensures this section fills remaining space */
+}
+
+.line-chart {
+  width: 48%;
+ }
+
+.donut-chart {
+  width: 30%;
+}
+
+.filter-buttons {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.filter-buttons button {
+  margin: 0 5px;
+  width: 2cm;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #a4a6a9;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+}
+
+.filter-buttons button:hover {
+  background-color: #929496;
+}
+
+.best-data-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  flex-grow: 1; /* Ensures this section fills remaining space */
+}
+
+.best-customers,
+.best-selling-items {
+  width: 45%;
+}
+
+.scrollable-table {
+  height: 250px;
+  overflow-y: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #d5e5fa;
+}
+
+th {
+  background-color: #cce0fb;
+}

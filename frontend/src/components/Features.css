@@ -1,0 +1,206 @@
+.main-page {
+    font-family: 'Roboto', sans-serif; /* Changed font family */
+    color: #333;
+    margin-left:6.5cm;
+  }
+  
+  /* Welcome Banner */
+  .welcome-banner {
+    background-image: url('./image.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .welcome-message h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .welcome-message p {
+    font-size: 1.2rem;
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .features h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .feature-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .feature-link {
+    text-decoration: none;
+  }
+  
+  .feature-card {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:nth-child(1) {
+    background-color: #E3F2FD; /* Light Blue */
+  }
+  
+  .feature-card:nth-child(2) {
+    background-color: #FFEBEE; /* Light Red */
+  }
+  
+  .feature-card:nth-child(3) {
+    background-color: #E8F5E9; /* Light Green */
+  }
+  
+  .feature-card:nth-child(4) {
+    background-color: #FFF3E0; /* Light Orange */
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    font-size: 1rem;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Daily Sales Section */
+  .sales-details {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .sales-box {
+    background-color: #f0f0f0;
+    padding: 15px; /* Reduced padding */
+    border-radius: 10px;
+    width: 120px; /* Reduced width */
+    text-align: center;
+    flex: 1;
+  }
+  
+  .sales-box h3 {
+    font-size: 1rem; /* Reduced font size */
+    margin-bottom: 5px;
+  }
+  
+  .sales-box p {
+    font-size: 1.2rem; /* Reduced font size */
+    font-weight: bold;
+  }
+  
+  .total-bills {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  
+  .total-amount {
+    background-color: #FF5722; /* Orange */
+    color: white;
+  }
+  
+  /* Align Daily Sales and Dashboard Link */
+  .sales-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .daily-sales-boxes {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .dashboard-link {
+    display: flex;
+    align-items: center;
+    color: #007BFF;
+    cursor: pointer;
+  }
+  
+  .dashboard-link:hover {
+    color: #0056b3;
+  }
+  
+  .dashboard-link svg {
+    margin-left: 5px;
+  }
+  
+  /* Pie chart size */
+  .pie-chart {
+    width: 200px; /* Adjusted size */
+    height: 200px; /* Adjusted size */
+    margin: 0 auto;
+  }
+  
+  /* View Dashboard Button */
+  .view-dashboard {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .view-dashboard button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-dashboard button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+  .extra-features {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .extra-features h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .feature-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  

@@ -1,0 +1,134 @@
+.bill-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    max-width: 800px;
+     border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left:7cm;
+}
+
+.shop-info {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.add-bill-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px dashed #ccc;
+}
+
+.items-table th,
+.items-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px dashed #ccc; /* Dashed lines for table cells */
+}
+
+.items-table th {
+    background-color: #f2f2f2;
+}
+
+.items-table input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-item-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-item-btn:hover {
+    background-color: #0056b3;
+}
+
+.totals {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.totals input,
+.totals select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width:20%;
+}
+
+.submit-btn,
+.print-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.submit-btn:hover,
+.print-btn:hover {
+    background-color: #218838;
+}
+
+.print-btn {
+    background-color: #007bff;
+}
+
+.print-btn:hover {
+    background-color: #0056b3;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .bill-container,
+    .bill-container * {
+        visibility: visible;
+    }
+    .bill-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    .items-table th,
+    .items-table td,
+    input,
+    .paymentMethod {
+        border: none;
+    }
+}

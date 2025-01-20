@@ -1,0 +1,147 @@
+/* General styles for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f4f8fb;
+  position: sticky;
+  top: 0;
+  margin-left: 6.2cm;
+  z-index: 10;
+  height: 50px; /* Set the height of the navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+}
+
+/* Styling for the logo and shop name */
+.navbar-brand h2 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for the right side of the navbar (user icon) */
+.navbar-user {
+  display: flex;
+  align-items: center;
+}
+
+ /* User icon with initials styling */
+.user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #34495e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  position: absolute;
+  top: 50px; /* Position below the user icon */
+  right: 20px; /* Align to the right of the navbar */
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px 0;
+  z-index: 20;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 10px;
+  
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+ border-radius: 3px;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Link styling */
+.dropdown-link {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.dropdown-link:hover {
+  background-color: #f0f0f0;
+}
+
+/* Login button styling */
+.login-button {
+  padding: 7px 15px;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Hover effects for buttons */
+.login-button:hover,
+.user-icon:hover {
+  background-color: #3c3b3b;
+}
+
+/* Position the navbar and sidebar so that they don't overlap */
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px; /* Adjust this value to match the width of your sidebar */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* For smaller screens, make sure navbar and sidebar do not conflict */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+    height: 50px; /* Keep a smaller height for mobile */
+  }
+
+  .navbar-container {
+    margin-left: 0;
+  }
+
+  .navbar-brand h2 {
+    font-size: 16px;
+  }
+
+  /* Adjust the navbar to take full width on mobile */
+  .navbar-user {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+/* Styling for the new 'i' icon */
+.info-icon {
+  margin-right: 20px; /* Adjust spacing between icons */
+  cursor: pointer;
+}
+
+.info-icon a {
+  color: #2c3e50; /* Icon color */
+  text-decoration: none;
+}
+
+.info-icon a:hover {
+  color: #34495e; /* Hover effect for the icon */
+}

@@ -1,0 +1,200 @@
+/* Overall container */
+.stock-manager-container-stockhistory {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin-left: 7cm;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Error message styling */
+.error-stockhistory {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Filter search section */
+.filter-container-stockhistory {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-item-stockhistory {
+  margin-bottom: 15px;
+}
+
+.filter-item-stockhistory label {
+  font-weight: bold;  width: 50%;
+
+}
+
+.filter-item-stockhistory input,
+.filter-item-stockhistory select {
+   padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Add New Stock Section */
+.add-new-stock-container-stockhistory {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-new-stock-form-stockhistory {
+  display: flex;
+  flex-direction: row;
+  overflow:auto;
+ }
+
+.add-new-stock-form-stockhistory input {
+   padding: 5px;
+   border: 1px solid #ccc;
+  border-radius: 4px;
+  width:10%;
+}
+
+
+.add-new-stock-form-stockhistory button {
+   background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  width:10%;
+  margin-left:15px;
+
+}
+
+.add-new-stock-form-stockhistory button:hover {
+  background-color: #0056b3;
+}
+
+/* Stocks Table */
+.stocks-container-stockhistory {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stock-table-stockhistory {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.stock-table-stockhistory th,
+.stock-table-stockhistory td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.stock-table-stockhistory th {
+  background-color: #f1f1f1;
+}
+
+.edit-btn-stockhistory,
+.delete-btn-stockhistory,
+.save-btn-stockhistory,
+.cancel-btn-stockhistory {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn-stockhistory {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+}
+
+.delete-btn-stockhistory {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.save-btn-stockhistory {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.cancel-btn-stockhistory {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.edit-btn-stockhistory:hover,
+.delete-btn-stockhistory:hover,
+.save-btn-stockhistory:hover,
+.cancel-btn-stockhistory:hover {
+  opacity: 0.8;
+}
+.manage-stock-header-stockhistory {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light gray background */
+  border-bottom: 2px solid #e0e0e0; /* Subtle border */
+}
+
+.manage-stock-header-stockhistory h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40; /* Darker gray text */
+  width:20%;
+}
+
+.manage-stock-actions-stockhistory-bt {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  width:100%;
+  margin-right:0cm;
+}
+
+.add-stock-btn-stockhistory,
+.manage-stock-history-link-stockhistory-bt {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-stock-btn-stockhistory {
+  background-color: #007bff; /* Blue background */
+  color: #ffffff; /* White text */
+}
+
+.add-stock-btn-stockhistory:hover {
+  background-color: #206ab9; /* Darker blue on hover */
+}
+
+.manage-stock-history-link-stockhistory-bt {
+  background-color: #6c757d; /* Gray background */
+  color: #ffffff; /* White text */
+}
+
+.manage-stock-history-link-stockhistory-bt:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+}

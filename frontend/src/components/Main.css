@@ -1,0 +1,25 @@
+.main-layout {
+  display: flex;
+  margin-left: 250px; /* Space for the sidebar */
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .main-layout {
+    margin-left: 0;
+    flex-direction: column;
+  }
+
+  .content {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,52 @@
+.sidenav {
+  width: 200px; /* Slightly increase width */
+  height: 100vh;
+  background-color: #2c3e50; /* Darker shade for the sidebar */
+  color: #ecf0f1; /* Light color for text */
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 30px 20px;
+}
+
+.sidenav-header {
+  font-size: 2rem; /* Slightly larger font size for the header */
+  margin-bottom: 40px;
+  color: #fff;
+  border-bottom: 2px solid #ecf0f1; /* Lighter border for header */
+  padding-bottom: 10px;
+}
+
+.sidenav-links {
+  list-style:none;
+  padding-top: 20px; /* Reduced padding for better layout */
+}
+
+.sidenav-link {
+  display: block;
+  color: #ecf0f1; /* Light color for link text */
+  text-decoration: none;
+  padding: 18px 0;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border-bottom: 2px solid #34495e; /* Subtle border */
+  padding-left: 0px;
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+}
+
+.sidenav-link:hover,
+.sidenav-link.active {
+  background-color: #4abaa4; /* New color for hover and active state */
+  padding-left: 10px; /* Add padding for smooth effect */
+  color: #fff; /* White color for text on hover */
+}
+
+.sidenav-link svg {
+  margin-right: 20px; /* Increased spacing between icon and text */
+}
+
+.sidenav-link.active {
+  font-weight: bold; /* Make active link text bold */
+  color: #fff; /* Ensure the active link text is always white */
+}
+
