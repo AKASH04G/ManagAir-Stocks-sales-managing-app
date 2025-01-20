@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://managair-stocks-sales-managing-app.onrender.com/api/',
 });
 
 // Add the Authorization header for all requests
