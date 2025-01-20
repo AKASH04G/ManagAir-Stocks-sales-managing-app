@@ -15,8 +15,7 @@ const auth = async (req, res, next) => {
         }
 
         const verified = jwt.verify(token, process.env.JWT_SECRET);
-        console.log('Token verified:', verified);
-
+ 
         const user = await User.findById(verified.id);
         if (!user) {
             console.log('User not found:', verified.id);
