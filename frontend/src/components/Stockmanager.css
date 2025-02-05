@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 30px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1250px;
   margin-left: 7cm;
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
@@ -139,6 +139,9 @@
   background-color: #6c757d;
   color: white;
   border: none;
+  padding-left:1px;
+  padding-right:1px;
+
 }
 
 .edit-btn-stockhistory:hover,
@@ -197,4 +200,56 @@
 
 .manage-stock-history-link-stockhistory-bt:hover {
   background-color: #5a6268; /* Darker gray on hover */
+}
+/* Basic styling for popups */
+.popup-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  z-index: 9999;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-message.success {
+  background-color: #4CAF50; /* Green for success */
+}
+
+.popup-message.error {
+  background-color: #f44336; /* Red for error */
+}
+
+.popup-message.fade-out {
+  opacity: 0;
+}
+
+/* Optional: Add fade-out animation */
+.popup-message.success,
+.popup-message.error {
+  animation: fadeIn 1s, fadeOut 2s 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
 }

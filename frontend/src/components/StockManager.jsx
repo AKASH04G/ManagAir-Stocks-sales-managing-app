@@ -42,6 +42,7 @@ const StockManager = () => {
       showPopup("Stock added successfully!", "success");
     } catch (err) {
       setError("Failed to add new stock.");
+      showPopup("Failed to add new stock.", "error");
     }
   };
 
@@ -63,8 +64,10 @@ const StockManager = () => {
       }
       await API.put(`/stocks/update/${id}`, { quantity: updatedQuantity });
       fetchStocks();
+      showPopup("Stock updated successfully!", "success");
     } catch (err) {
       setError("Failed to update stock.");
+      showPopup("Failed to update stock.", "error");
     }
   };
 
@@ -96,6 +99,7 @@ const StockManager = () => {
       showPopup("Stock updated successfully!", "success");
     } catch (err) {
       setError("Failed to update stock.");
+      showPopup("Failed to update stock.", "error");
     }
   };
 

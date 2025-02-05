@@ -1,31 +1,59 @@
 .shop-info-container {
   max-width: 600px;
-   padding: 20px;
+  padding: 20px;
   background: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left:7cm;
+  margin: 20px auto;
+  transition: transform 0.3s ease;
+  font-family: Metropolis, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.shop-info-container:hover {
+  transform: scale(1.02);
 }
 
 .shop-info-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .shop-info-header h1 {
   margin: 0;
+  font-size: 28px;
+  color: #007bff;
 }
 
-.edit-icon {
-  font-size: 24px;
+.icon {
   cursor: pointer;
   color: #007bff;
-  transition: color 0.3s;
+  transition: transform 0.3s ease, color 0.4s ease;
+  font-size: 28px;
+  padding: 5px;
+  border-radius: 50%;
 }
 
-.edit-icon:hover {
+.icon:hover {
   color: #0056b3;
+  transform: rotate(20deg) scale(1.3);
+  background: rgba(0, 123, 255, 0.1);
+}
+.icon1 {
+  cursor: pointer;
+  color: #e8edf3;
+  transition: transform 0.3s ease, color 0.4s ease;
+  font-size: 28px;
+   border-radius: 50%;
+}
+
+.icon1:hover {
+  color: #9eaebe;
+  transform: rotate(20deg) scale(1.3);
+  background: rgba(0, 123, 255, 0.1);
 }
 
 .shop-info-field {
@@ -35,50 +63,99 @@
 }
 
 .shop-info-field label {
-  width: 100px;
+  width: 120px;
   font-weight: bold;
+  color: #444;
 }
 
-.shop-info-field p {
-  margin: 0;
-  flex-grow: 1;
-  padding: 5px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
+.shop-info-field p,
 .shop-info-field input {
   flex-grow: 1;
-  padding: 5px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fff;
   border-radius: 5px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.shop-info-field input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  outline: none;
 }
 
 .shop-info-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
   margin-top: 20px;
 }
 
 .shop-info-buttons button {
-  margin-right: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width:auto;
+  gap: 8px;
   background-color: #007bff;
   color: white;
+   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s ease;
+  font-weight: bold;
 }
 
 .shop-info-buttons button:hover {
   background-color: #0056b3;
+  transform: translateY(-3px);
 }
 
 .shop-info-buttons button.cancel {
   background-color: #6c757d;
+
 }
 
 .shop-info-buttons button.cancel:hover {
   background-color: #5a6268;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  z-index: 9999;
+  animation: slideFade 4s ease-in-out forwards;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.popup.success {
+  background: linear-gradient(135deg, #28a745, #4caf50);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.popup.error {
+  background: linear-gradient(135deg, #dc3545, #e74c3c);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: #ccc;
+}
+
+.popup:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideFade {
+  0% { opacity: 0; transform: translateY(-30px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
 }

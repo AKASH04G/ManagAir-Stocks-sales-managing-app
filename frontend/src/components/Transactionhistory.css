@@ -7,6 +7,9 @@
   padding: 12px;
 
 }
+.transaction-history-page{
+  margin-left:7cm;
+}
 
 /* Transaction history (just an example) */
 .transaction-history {

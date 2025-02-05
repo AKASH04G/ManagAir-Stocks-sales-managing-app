@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import API from './Api'; // Ensure API is properly configured with baseURL and interceptors for error handling
+import API from './Api';
+import { Pencil, Save, XCircle } from 'lucide-react';  // Importing icons
+import './ShopInfo.css';
 
 const ShopInfo = () => {
   const [shopInfo, setShopInfo] = useState(null);
@@ -12,14 +14,12 @@ const ShopInfo = () => {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [popup, setPopup] = useState(null);
   const token = localStorage.getItem('token');
 
-  // Fetch shop info
   useEffect(() => {
     const fetchShopInfo = async () => {
       setLoading(true);
-      setError('');
       try {
         const response = await API.get('/users/shopinfo', {
           headers: { Authorization: `Bearer ${token}` },
@@ -27,8 +27,8 @@ const ShopInfo = () => {
         setShopInfo(response.data);
         setFormData(response.data);
       } catch (err) {
-        setError('Failed to fetch shop info. Please try again later.');
-        console.error('Error fetching shop info:', err);
+        triggerPopup('fail', 'Failed to fetch shop info.');
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -36,114 +36,69 @@ const ShopInfo = () => {
     fetchShopInfo();
   }, [token]);
 
-  // Handle form changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Save shop info
   const handleSave = async () => {
-    setError('');
     try {
       const response = await API.put('/users/shopinfo', formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setShopInfo(response.data.shopInfo);
       setIsEditing(false);
+      triggerPopup('success', 'Shop info updated!');
     } catch (err) {
-      setError('Failed to update shop info. Please try again.');
-      console.error('Error updating shop info:', err);
+      triggerPopup('fail', 'Update failed.');
+      console.error(err);
     }
   };
 
-  // Render loading state
+  const triggerPopup = (type, message) => {
+    setPopup({ type, message });
+    setTimeout(() => setPopup(null), 2000);
+  };
+
   if (loading) return <p>Loading...</p>;
 
-  // Render error state
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
-
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-      <h1>Shop Info</h1>
-      <div style={{ marginBottom: '15px' }}>
-        <label>Owner Name:</label>
-        {isEditing ? (
-          <input
-            name="ownerName"
-            value={formData.ownerName}
-            onChange={handleChange}
-            style={{ marginLeft: '10px' }}
-          />
-        ) : (
-          <p>{shopInfo.ownerName}</p>
+    <div className="shop-info-container">
+      <div className="shop-info-header">
+        <h1 >Shop Info</h1>
+        {!isEditing && (
+          <Pencil className="icon edit-icon" onClick={() => setIsEditing(true)} />
         )}
       </div>
-      <div style={{ marginBottom: '15px' }}>
-        <label>Shop Name:</label>
-        {isEditing ? (
-          <input
-            name="shopName"
-            value={formData.shopName}
-            onChange={handleChange}
-            style={{ marginLeft: '10px' }}
-          />
-        ) : (
-          <p>{shopInfo.shopName}</p>
-        )}
-      </div>
-      <div style={{ marginBottom: '15px' }}>
-        <label>Email:</label>
-        {isEditing ? (
-          <input
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            style={{ marginLeft: '10px' }}
-          />
-        ) : (
-          <p>{shopInfo.email}</p>
-        )}
-      </div>
-      <div style={{ marginBottom: '15px' }}>
-        <label>Phone:</label>
-        {isEditing ? (
-          <input
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            style={{ marginLeft: '10px' }}
-          />
-        ) : (
-          <p>{shopInfo.phone}</p>
-        )}
-      </div>
-      <div style={{ marginBottom: '15px' }}>
-        <label>Address:</label>
-        {isEditing ? (
-          <input
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            style={{ marginLeft: '10px' }}
-          />
-        ) : (
-          <p>{shopInfo.address}</p>
-        )}
-      </div>
-      {isEditing ? (
-        <button onClick={handleSave} style={{ marginRight: '10px' }}>
-          Save
-        </button>
-      ) : (
-        <button onClick={() => setIsEditing(true)} style={{ marginRight: '10px' }}>
-          Edit
-        </button>
-      )}
+
+      {['ownerName', 'shopName', 'email', 'phone', 'address'].map((field) => (
+  <div key={field} className="shop-info-field">
+    <label>
+      {field
+        .replace(/([A-Z])/g, ' $1')   // Add space before capital letters
+        .replace(/^./, (str) => str.toUpperCase()) // Capitalize the first letter
+        .replace(/\b\w/g, (char) => char.toUpperCase())}  {/* Capitalize first letter of each word */}
+    :</label>
+    {isEditing ? (
+      <input name={field} value={formData[field]} onChange={handleChange} />
+    ) : (
+      <p>{shopInfo[field]}</p>
+    )}
+  </div>
+))}
+
+
       {isEditing && (
-        <button onClick={() => setIsEditing(false)} style={{ marginLeft: '10px' }}>
-          Cancel
-        </button>
+        <div className="shop-info-buttons">
+          <button onClick={handleSave}>
+            <Save className="icon1" /> Save
+          </button>
+          <button className="cancel" onClick={() => setIsEditing(false)}>
+            <XCircle className="icon1" /> Cancel
+          </button>
+        </div>
       )}
+
+      {popup && <div className={`popup ${popup.type}`}>{popup.message}</div>}
     </div>
   );
 };

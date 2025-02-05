@@ -95,123 +95,125 @@ const StockHistory = () => {
   ];
 
   return (
-    <div className="transaction-history">
+    <div className="transaction-history-page">
       <h2>Stocks History</h2>
 
-      {/* Stock Selection Dropdown */}
-      <div className="stock-filter">
-        <label htmlFor="stockSelect">Select Stock:</label>
-        <select
-          id="stockSelect"
-          value={selectedStock}
-          onChange={handleStockChange}
-        >
-          <option value="">All Stocks</option>
-          {stocks.map((stock) => (
-            <option key={stock._id} value={stock._id}>
-              {stock.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <div className="filters-container">
+        {/* Stock Selection Dropdown */}
+        <div className="filter stock-filter">
+          <label htmlFor="stockSelect">Select Stock:</label>
+          <select
+            id="stockSelect"
+            value={selectedStock}
+            onChange={handleStockChange}
+          >
+            <option value="">All Stocks</option>
+            {stocks.map((stock) => (
+              <option key={stock._id} value={stock._id}>
+                {stock.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Category Filter */}
-      <div className="category-filter">
-        <label htmlFor="categoryFilter">Filter by Category:</label>
-        <select
-          id="categoryFilter"
-          value={categoryFilter}
-          onChange={(e) => setCategoryFilter(e.target.value)}
-        >
-          <option value="">All Categories</option>
-          {categories.map((category, index) => (
-            <option key={index} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
+        {/* Category Filter */}
+        <div className="filter category-filter">
+          <label htmlFor="categoryFilter">Filter by Category:</label>
+          <select
+            id="categoryFilter"
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Stock Name Filter */}
-      <div className="name-filter">
-        <label htmlFor="nameFilter">Filter by Stock Name:</label>
-        <input
-          type="text"
-          id="nameFilter"
-          value={nameFilter}
-          onChange={(e) => setNameFilter(e.target.value)}
-        />
-      </div>
+        {/* Stock Name Filter */}
+        <div className="filter name-filter">
+          <label htmlFor="nameFilter">Filter by Stock Name:</label>
+          <input
+            type="text"
+            id="nameFilter"
+            value={nameFilter}
+            onChange={(e) => setNameFilter(e.target.value)}
+          />
+        </div>
 
-      {/* Quantity Change Filter */}
-      <div className="quantity-filter">
-        <label htmlFor="quantityFilter">Filter by Quantity Change:</label>
-        <select
-          id="quantityFilter"
-          value={quantityFilter}
-          onChange={(e) => setQuantityFilter(e.target.value)}
-        >
-          <option value="">All</option>
-          <option value="increase">Increase</option>
-          <option value="decrease">Decrease</option>
-        </select>
-      </div>
+        {/* Quantity Change Filter */}
+        <div className="filter quantity-filter">
+          <label htmlFor="quantityFilter">Filter by Quantity Change:</label>
+          <select
+            id="quantityFilter"
+            value={quantityFilter}
+            onChange={(e) => setQuantityFilter(e.target.value)}
+          >
+            <option value="">All</option>
+            <option value="increase">Increase</option>
+            <option value="decrease">Decrease</option>
+          </select>
+        </div>
 
-      {/* Date Range Filter */}
-      <div className="date-filter">
-        <label htmlFor="startDate">Start Date:</label>
-        <input
-          type="date"
-          id="startDate"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <label htmlFor="endDate">End Date:</label>
-        <input
-          type="date"
-          id="endDate"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
-      </div>
+        {/* Date Range Filter */}
+        <div className="filter date-filter">
+          <label htmlFor="startDate">Start Date:</label>
+          <input
+            type="date"
+            id="startDate"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+          <label htmlFor="endDate">End Date:</label>
+          <input
+            type="date"
+            id="endDate"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </div>
 
-      <button onClick={applyFilters}>Apply Filters</button>
+        <button className="apply-filters" onClick={applyFilters}>Apply Filters</button>
+      </div>
 
       {error && <p className="error-message">{error}</p>}
 
       {/* Display filtered transaction history */}
-      <ul className="transaction-table">
+      <div className="transaction-history-table">
         {filteredHistory.length > 0 ? (
           <>
-            <thead>
-              <tr>
-                <th>Stock Name</th>
-                <th>Category</th>
-                <th>Quantity Change</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredHistory.map((transaction, index) => (
-                <tr key={index}>
-                  <td>{transaction.stockId?.name || "Unknown"}</td>
-                  <td>{transaction.stockId?.category || "Unknown"}</td>
-                  <td
-                    className={
-                      transaction.quantityChange < 0 ? "negative" : "positive"
-                    }
-                  >
-                    {transaction.quantityChange}
-                  </td>
-                  <td>{new Date(transaction.date).toLocaleString()}</td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Stock Name</th>
+                  <th>Category</th>
+                  <th>Quantity Change</th>
+                  <th>Date</th>
                 </tr>
-              ))}
-            </tbody>
+              </thead>
+              <tbody>
+                {filteredHistory.map((transaction, index) => (
+                  <tr key={index}>
+                    <td>{transaction.stockId?.name || "Unknown"}</td>
+                    <td>{transaction.stockId?.category || "Unknown"}</td>
+                    <td
+                      className={transaction.quantityChange < 0 ? "negative" : "positive"}
+                    >
+                      {transaction.quantityChange}
+                    </td>
+                    <td>{new Date(transaction.date).toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </>
         ) : (
           <p className="no-transactions">No transactions recorded.</p>
         )}
-      </ul>
+      </div>
     </div>
   );
 };
