@@ -2,7 +2,7 @@
     padding: 20px;
     background-color: #f9f9f9;
     max-width: 800px;
-     border: 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left:7cm;
@@ -33,7 +33,8 @@
     width: 20%;
 }
 
-.items-table {
+.items-table,
+.totals-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
@@ -41,17 +42,20 @@
 }
 
 .items-table th,
-.items-table td {
+.items-table td,
+.totals-table td {
     padding: 8px;
     text-align: center;
-    border: 1px dashed #ccc; /* Dashed lines for table cells */
+    border: 1px dashed #ccc;
 }
 
 .items-table th {
     background-color: #f2f2f2;
 }
 
-.items-table input {
+.items-table input,
+.totals-table input,
+.totals-table select {
     width: 80%;
     padding: 5px;
     border: 1px solid #ddd;
@@ -72,63 +76,130 @@
     background-color: #0056b3;
 }
 
-.totals {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.totals input,
-.totals select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width:20%;
-}
-
-.submit-btn,
-.print-btn {
+.submit-btn {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
+    align-self: center;
 }
 
-.submit-btn:hover,
-.print-btn:hover {
+.submit-btn:hover {
     background-color: #218838;
 }
 
-.print-btn {
-    background-color: #007bff;
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    opacity: 0;
+    animation: popup-animation 3s forwards;
 }
 
-.print-btn:hover {
+.popup.success {
+    background-color: #28a745;
+}
+
+.popup.fail {
+    background-color: #dc3545;
+}
+
+@keyframes popup-animation {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+.totals {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.totals-table td {
+    padding: 10px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.totals-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.totals-value {
+    color: #28a745;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.totals-input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.totals-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.totals-table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.totals-table tr:hover {
+    background-color: #e9ecef;
+}
+
+.add-item-btn, .submit-btn {
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-item-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.add-item-btn:hover {
     background-color: #0056b3;
 }
 
-@media print {
-    body * {
-        visibility: hidden;
-    }
-    .bill-container,
-    .bill-container * {
-        visibility: visible;
-    }
-    .bill-container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-    }
-    .items-table th,
-    .items-table td,
-    input,
-    .paymentMethod {
-        border: none;
-    }
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    align-self: center;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
 }

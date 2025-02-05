@@ -22,7 +22,9 @@ const AddBill = () => {
     });
 
     const [userId, setUserId] = useState('');
-const navigate=useNavigate();
+    const [showPopup, setShowPopup] = useState(null); // success or fail message
+    const navigate = useNavigate();
+
     useEffect(() => {
         const storedUserId = localStorage.getItem('userId');
         if (storedUserId) setUserId(storedUserId);
@@ -41,8 +43,8 @@ const navigate=useNavigate();
 
     const calculateTotals = () => {
         const subTotal = formData.items.reduce((sum, item) => sum + item.total, 0);
-        const tax = (parseFloat(formData.tax || 0))*subTotal/100;
-        const discount = parseFloat(formData.discount || 0)*subTotal/100;
+        const tax = (parseFloat(formData.tax || 0)) * subTotal / 100;
+        const discount = parseFloat(formData.discount || 0) * subTotal / 100;
         const totalAmount = subTotal + tax - discount;
         return { subTotal, totalAmount };
     };
@@ -62,7 +64,7 @@ const navigate=useNavigate();
     const addItem = () => {
         setFormData({
             ...formData,
-            items: [...formData.items, { productId: '', name: '',category:'', quantity: 1, price: 0, total: 0 }],
+            items: [...formData.items, { productId: '', name: '', category: '', quantity: 1, price: 0, total: 0 }],
         });
     };
 
@@ -73,25 +75,31 @@ const navigate=useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!formData.customerName || !formData.contact) {
-            alert('Please provide customer name and contact details.');
+            setShowPopup({ type: 'fail', message: 'Please provide customer name and contact details.' });
             return;
         }
-
+    
         if (formData.items.some((item) => !item.name || item.quantity <= 0 || item.price <= 0)) {
-            alert('All items must have valid names, quantities, and prices.');
+            setShowPopup({ type: 'fail', message: 'All items must have valid names, quantities, and prices.' });
             return;
         }
-
+    
         try {
             await API.post('/sales/add', { ...formData, userId });
-            alert('Bill added successfully!');
-            navigate("/sales");
+            setShowPopup({ type: 'success', message: 'Bill added successfully!' });
+            
+            // After 2 seconds, navigate to the sales list
+            setTimeout(() => {
+                navigate("/sales");
+            }, 2000);
+    
+            // Reset form data
             setFormData({
                 customerName: '',
                 contact: '',
-                items: [{ productId: '',description:'', name: '', quantity: 1, price: 0, total: 0 }],
+                items: [{ productId: '', description:'', name: '', quantity: 1, price: 0, total: 0 }],
                 subTotal: 0,
                 tax: 0,
                 discount: 0,
@@ -100,13 +108,10 @@ const navigate=useNavigate();
             });
         } catch (error) {
             console.error('Error adding bill:', error.response?.data || error.message);
-            alert('Failed to add bill. Please try again.');
+            setShowPopup({ type: 'fail', message: 'Failed to add bill. Please try again.' });
         }
     };
-
-    const handlePrint = () => {
-        window.print();
-    };
+    
 
     return (
         <div className="bill-container">
@@ -140,7 +145,7 @@ const navigate=useNavigate();
                     <thead>
                         <tr>
                             <th>S.No</th>
-                            <th>description</th>
+                            <th>Description</th>
                             <th>Category</th>
                             <th>Quantity</th>
                             <th>Price</th>
@@ -150,13 +155,7 @@ const navigate=useNavigate();
                     <tbody>
                         {formData.items.map((item, index) => (
                             <tr key={index}>
-                                <td>
-                                    <input
-                                        type="text"
-                                        value={item.productId}
-                                        onChange={(e) => handleInputChange(e, index, 'productId')}
-                                    />
-                                </td>
+                                <td>{index + 1}</td>
                                 <td>
                                     <input
                                         type="text"
@@ -200,40 +199,70 @@ const navigate=useNavigate();
                     Add Item
                 </button>
                 <div className="totals">
-                    <label>Subtotal: ₹{formData.subTotal.toFixed(2)}</label>
-                    <label>Tax:(in %)</label>
+    <table className="totals-table">
+        <tbody>
+            <tr>
+                <td className="totals-label">Subtotal:</td>
+                <td className="totals-value">₹{formData.subTotal.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td className="totals-label">Tax (in %):</td>
+                <td>
                     <input
                         type="number"
                         name="tax"
                         value={formData.tax}
                         onChange={handleInputChange}
+                        className="totals-input"
                     />
-                    <label>Discount:(in %)</label>
+                </td>
+            </tr>
+            <tr>
+                <td className="totals-label">Discount (in %):</td>
+                <td>
                     <input
                         type="number"
                         name="discount"
                         value={formData.discount}
                         onChange={handleInputChange}
+                        className="totals-input"
                     />
-                    <label>Total Amount: ₹{formData.totalAmount.toFixed(2)}</label>
-                    <label>Payment Method</label>
+                </td>
+            </tr>
+            <tr>
+                <td className="totals-label">Total Amount:</td>
+                <td className="totals-value">₹{formData.totalAmount.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td className="totals-label">Payment Method:</td>
+                <td>
                     <select
                         name="paymentMethod"
                         value={formData.paymentMethod}
                         onChange={handleInputChange}
+                        className="totals-input"
                     >
                         <option value="Cash">Cash</option>
                         <option value="Card">Card</option>
                         <option value="UPI">UPI</option>
                     </select>
-                </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
                 <div className="buttons">
                     <button type="submit" className="submit-btn">Submit</button>
-                    <button type="button" className="print-btn" onClick={handlePrint}>
-                        Print Bill
-                    </button>
                 </div>
             </form>
+
+            {/* Success/Fail Popup */}
+            {showPopup && (
+                <div className={`popup ${showPopup.type}`}>
+                    <p>{showPopup.message}</p>
+                </div>
+            )}
         </div>
     );
 };
