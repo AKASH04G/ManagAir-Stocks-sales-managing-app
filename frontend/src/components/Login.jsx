@@ -3,19 +3,33 @@ import API from './Api';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+const Popup = ({ message, type, onClose }) => {
+    return (
+        <div className={`popup ${type}`} onClick={onClose}>
+            {message}
+        </div>
+    );
+};
+
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
+    const [popup, setPopup] = useState(null);
     const navigate = useNavigate();
+
+    const showPopup = (message, type) => {
+        setPopup({ message, type });
+        setTimeout(() => setPopup(null), 3000);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const { data } = await API.post('/users/login', formData);
             localStorage.setItem('token', data.token);
-            alert('Login successful');
-            navigate('/');
+            showPopup('Login successful', 'success');
+            setTimeout(() => navigate('/'), 3000);
         } catch (err) {
-            alert(err.response?.data?.message || 'Login failed');
+            showPopup(err.response?.data?.message || 'Login failed!', 'error');
         }
     };
 
@@ -25,12 +39,13 @@ const Login = () => {
 
     return (
         <div className="login-page">
+            {popup && <Popup message={popup.message} type={popup.type} onClose={() => setPopup(null)} />}
+
             <div className="left-section">
-                
                 <div className="greeting-message">
-                <div className="app-title-container">
-                    <h1 className="app-title"> ManagAir: Bill & Stock</h1>
-                </div>
+                    <div className="app-title-container">
+                        <h1 className="app-title">ManagAir: Bill & Stock</h1>
+                    </div>
                     <h1>Welcome back,</h1>
                     <p>Login to manage your bills and stocks efficiently.</p>
                 </div>

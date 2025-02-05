@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useNavigate} from 'react';
 import API from './Api'; // Configured Axios instance
 import './AddBill.css';
 
@@ -21,7 +21,7 @@ const AddBill = () => {
     });
 
     const [userId, setUserId] = useState('');
-
+const navigate=useNavigate();
     useEffect(() => {
         const storedUserId = localStorage.getItem('userId');
         if (storedUserId) setUserId(storedUserId);
@@ -86,6 +86,7 @@ const AddBill = () => {
         try {
             await API.post('/sales/add', { ...formData, userId });
             alert('Bill added successfully!');
+            navigate("/sales");
             setFormData({
                 customerName: '',
                 contact: '',

@@ -9,21 +9,26 @@ const Signup = () => {
         email: '',
         password: '',
     });
+    const [popup, setPopup] = useState(null); // State for popup
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const showPopup = (message, type) => {
+        setPopup({ message, type });
+        setTimeout(() => setPopup(null), 3000); // Auto-hide after 3 seconds
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await API.post('/users/register', formData);
-            alert('Signup successful!');
-            navigate('/'); // Redirect to Stocks page
+            showPopup('Signup successful!', 'success');
+            setTimeout(() => navigate('/'), 1500); // Redirect after a short delay
         } catch (error) {
-            console.error(error);
-            alert('Signup failed. Please try again.');
+            showPopup('Signup failed. Please try again.', 'error');
         }
     };
 
@@ -33,6 +38,12 @@ const Signup = () => {
 
     return (
         <div className="login-page">
+            {popup && (
+                <div className={`popup ${popup.type}`} onClick={() => setPopup(null)}>
+                    {popup.message}
+                </div>
+            )}
+
             <div className="left-section">
                 <div className="app-title-container">
                     <h1 className="app-title">ManagAir: Bill & Stock</h1>
@@ -42,11 +53,11 @@ const Signup = () => {
                     <p>Create an account to manage your bills and stocks efficiently.</p>
                 </div>
             </div>
+
             <div className="right-section">
                 <div className="login-container">
                     <div className="login-form">
-                    <h2>Signup</h2>
-
+                        <h2>Signup</h2>
                         <form onSubmit={handleSubmit}>
                             <input
                                 type="text"
