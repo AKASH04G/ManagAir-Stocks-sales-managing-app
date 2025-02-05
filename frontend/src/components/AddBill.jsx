@@ -259,7 +259,7 @@ const AddBill = () => {
 
             {/* Success/Fail Popup */}
             {showPopup && (
-                <div className={`popup ${showPopup.type}`}>
+                <div className={`popup1 ${showPopup.type}`}>
                     <p>{showPopup.message}</p>
                 </div>
             )}

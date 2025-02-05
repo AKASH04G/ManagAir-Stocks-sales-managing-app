@@ -90,7 +90,7 @@
     background-color: #218838;
 }
 
-.popup {
+.popup1 {
     position: fixed;
     top: 20%;
     left: 50%;
@@ -103,11 +103,11 @@
     animation: popup-animation 3s forwards;
 }
 
-.popup.success {
+.popup1.success {
     background-color: #28a745;
 }
 
-.popup.fail {
+.popup1.fail {
     background-color: #dc3545;
 }
 
