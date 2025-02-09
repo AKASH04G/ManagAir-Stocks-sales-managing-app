@@ -1,11 +1,12 @@
- 
-
+/* ======= Base Styles (For Laptops & PCs, No Changes) ======= */
 .login-page {
     display: flex;
-    height: 80vh; padding: 2cm;
+    height: 80vh;
+    padding: 2cm;
     font-family: 'Arial', sans-serif;
     background-color: #ddeafe;
 }
+
 .app-title-container {
     position: absolute;
     top: 3cm;
@@ -77,10 +78,9 @@ form {
 }
 
 input {
-    padding: 0.5rem 0;
+    padding: 0.75rem;
     margin: 0.5rem 0;
-    border: none;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
     outline: none;
 }
 
@@ -91,7 +91,7 @@ input {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%; /* Make button same width as input */
+    width: 100%;
 }
 
 .signup-btn[type="submit"]:hover {
@@ -115,42 +115,78 @@ input {
 .signup span:hover {
     text-decoration: underline;
 }
-.popup {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    color: white;
-    font-weight: 600;
-    z-index: 9999;
-    animation: slideFade 4s ease-in-out forwards;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+
+/* ======= Mobile & Tablet Responsive Design ======= */
+@media (max-width: 1024px) {
+    .login-page {
+        flex-direction: column;
+        height: auto;
+        padding: 1cm;
+        align-items: center;
+    }
+
+    .left-section {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .right-section {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+
+    .login-container {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .login-form {
+        padding: 2rem;
+    }
+
+    input {
+        padding: 0.5rem;
+    }
+
+    .signup-btn[type="submit"] {
+        padding: 0.6rem;
+    }
 }
 
-.popup.success {
-    background: linear-gradient(135deg, #28a745, #4caf50);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
+/* For smaller mobile screens */
+@media (max-width: 768px) {
+    .login-page {
+        padding: 1rem;
+    }
 
-.popup.error {
-    background: linear-gradient(135deg, #dc3545, #e74c3c);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    color:#ccc;
-}
+    .left-section {
+        padding: 1.5rem;
+    }
 
-.popup:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
+    .greeting-message h1 {
+        font-size: 1.3rem;
+    }
 
-@keyframes slideFade {
-    0% { opacity: 0; transform: translateY(-30px); }
-    15% { opacity: 1; transform: translateY(0); }
-    85% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-30px); }
+    .greeting-message p {
+        font-size: 0.9rem;
+    }
+
+    .right-section {
+        padding: 1rem;
+    }
+
+    .login-container {
+        width: 95%;
+    }
+
+    .login-form {
+        padding: 1.5rem;
+    }
+
+    .signup-btn[type="submit"] {
+        font-size: 1rem;
+    }
 }

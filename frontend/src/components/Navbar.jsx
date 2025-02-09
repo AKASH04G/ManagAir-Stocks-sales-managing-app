@@ -4,10 +4,11 @@ import { IoIosInformationCircleOutline } from 'react-icons/io'; // Import the 'i
 import './Navbar.css';
 import Sidenavbar from './SideNavbar';
 import API from './Api'; // Ensure API is properly configured with baseURL and interceptors for error handling
-
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Manage dropdown visibility
   const [shopInfo, setShopInfo] = useState(null);
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     ownerName: '',
     shopName: '',
@@ -57,7 +58,10 @@ const Navbar = () => {
       ? nameParts[0].charAt(0) + nameParts[1].charAt(0)
       : nameParts[0].charAt(0) + nameParts[0].charAt(1);
   };
-
+  
+const shopinfonavi=()=>{
+    navigate("/shop-info")
+}
   return (
     <>
       <Sidenavbar />
@@ -68,7 +72,7 @@ const Navbar = () => {
         <div className="navbar-user">
           {/* Add the new 'i' icon for the Features page */}
           <div className="info-icon">
-            <a href="/features">
+            <a href="/features" alt="Features">
               <IoIosInformationCircleOutline size={34} />
             </a>
           </div>
@@ -81,12 +85,11 @@ const Navbar = () => {
               <ul>
                 <li>{formData.ownerName}</li>
                 <li>{formData.email}</li>
-                <li>
-                  <a href="/shop-info" className="dropdown-link">
+                <li onClick={shopinfonavi} className="dropdown-link" >
                     Shop Info
-                  </a>
+                  
                 </li>
-                <li onClick={logout} className="dropdown-link"  >
+                <li onClick={logout} className="dropdown-link" style={{color:"#e73434"}} >
                   <FaSignOutAlt /> Logout
                 </li>
               </ul>

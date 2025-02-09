@@ -51,7 +51,7 @@ API.interceptors.response.use(
     (error) => {
         if (error.response && error.response.status === 401) {
             localStorage.removeItem('token');
-            showPopup('Login Session Expired', 'error'); // Replacing alert with popup
+            showPopup('Session Expired/Login Again', 'error'); // Replacing alert with popup
             setTimeout(() => {
                 window.location.href = '/login'; // Redirect after popup
             }, 1500);

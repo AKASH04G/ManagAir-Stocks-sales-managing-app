@@ -1,12 +1,4 @@
 .shop-info-container {
-  margin: 20px auto; /* Centers it properly */
-  width: 90%; /* Makes it responsive */
-  max-width: 600px; /* Prevents it from being too wide */
-}
-
-.shop-info-container {
-  
-  margin-left:7cm;
   max-width: 600px;
   padding: 20px;
   background: #f9f9f9;
@@ -169,12 +161,14 @@
 }
 @media (max-width: 1024px) {  /* Tablets */
   .shop-info-container {
-    width: 80%;
+    width: 90%;
+    padding: 18px;
   }
 
   .shop-info-buttons {
-    flex-direction: column; /* Stacks buttons vertically */
-    align-items: center;
+    flex-direction: row; 
+    justify-content: center;
+    gap: 10px;
   }
 }
 
@@ -184,34 +178,40 @@
     padding: 15px;
   }
 
+  .shop-info-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
   .shop-info-field {
-    flex-direction: column; /* Stacks label and input */
+    flex-direction: column;
     align-items: flex-start;
+    width: 100%;
   }
 
   .shop-info-field label {
-    width: 100%; /* Makes label full width */
+    width: 100%;
     margin-bottom: 5px;
+    text-align: left;
   }
 
   .shop-info-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .shop-info-buttons button {
-    width: 100%; /* Buttons take full width on mobile */
+    width: 100%;
     justify-content: center;
   }
-}
-@media (max-width: 768px) {
+
   .icon, .icon1 {
-    font-size: 20px;
-    padding: 3px;
+    font-size: 22px;
+    padding: 5px;
   }
 
   .shop-info-header h1 {
-    font-size: 22px;
+    font-size: 24px;
   }
 }

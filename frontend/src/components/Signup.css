@@ -1,21 +1,18 @@
-/* General Styles */
+  
+
 .login-page {
     display: flex;
-    height: 100vh;
-    padding: 5%;
+    height: 80vh; padding: 2cm;
     font-family: 'Arial', sans-serif;
     background-color: #ddeafe;
 }
-
-/* App Title */
 .app-title-container {
     position: absolute;
-    top: 5%;
-    left: 5%;
-    font-size: 16px;
+    top: 3cm;
+    left: 3cm;
+    font-size: 5px;
 }
 
-/* Left Section (Welcome Message) */
 .left-section {
     width: 45%;
     background-color: #007bff;
@@ -26,16 +23,17 @@
     flex-direction: column;
     border-radius: 10px;
     padding: 1.5rem;
-    text-align: center;
 }
 
 .left-section .app-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .greeting-message {
     padding: 1rem;
+    text-align: center;
 }
 
 .greeting-message h1 {
@@ -48,15 +46,13 @@
     color: #ccc;
 }
 
-/* Right Section (Login Form) */
 .right-section {
-    width: 55%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Login Container */
 .login-container {
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -66,9 +62,8 @@
     max-width: 400px;
 }
 
-/* Login Form */
 .login-form {
-    padding: 2rem;
+    padding: 4rem;
     text-align: center;
 }
 
@@ -83,15 +78,13 @@
 }
 
 input {
-    padding: 0.8rem;
+    padding: 1rem 0;
     margin: 0.5rem 0;
+    border: none;
     border: 1px solid #ccc;
     outline: none;
-    border-radius: 5px;
-    width: 100%;
 }
 
-/* Login Button */
 .signup-btn[type="submit"] {
     padding: 0.75rem;
     background-color: #007bff;
@@ -99,23 +92,23 @@ input {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    font-size: 1rem;
+    width: 100%; /* Make button same width as input */
 }
 
 .signup-btn[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Signup Section */
 .signup {
     margin-top: 1rem;
-    text-align: center;
+    text-align: center; 
 }
 
 .signup p {
     color: #555;
+     
 }
+ 
 
 .signup span {
     color: #007bff;
@@ -124,75 +117,4 @@ input {
 
 .signup span:hover {
     text-decoration: underline;
-}
-
-/* ========== RESPONSIVE DESIGN ========== */
-
-/* Tablet View */
-@media (max-width: 1024px) {
-    .login-page {
-        flex-direction: column;
-        height: auto;
-        padding: 3%;
-    }
-
-    .left-section {
-        width: 100%;
-        padding: 2rem;
-    }
-
-    .right-section {
-        width: 100%;
-        margin-top: 2rem;
-        display: flex;
-        justify-content: center;
-    }
-
-    .login-container {
-        width: 90%;
-        max-width: 350px;
-    }
-}
-
-/* Mobile View */
-@media (max-width: 768px) {
-    .login-page {
-        flex-direction: column;
-        align-items: center;
-        padding: 2%;
-    }
-
-    .app-title-container {
-        position: static;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .left-section {
-        width: 90%;
-        padding: 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    .right-section {
-        width: 100%;
-    }
-
-    .login-container {
-        width: 95%;
-    }
-
-    .login-form {
-        padding: 1.5rem;
-    }
-
-    input {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-    }
-
-    .signup-btn {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-    }
 }

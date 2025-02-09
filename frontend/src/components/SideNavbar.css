@@ -1,52 +1,103 @@
 .sidenav {
-  width: 200px; /* Slightly increase width */
+  width: 200px; /* Default width for laptops/PC */
   height: 100vh;
-  background-color: #2c3e50; /* Darker shade for the sidebar */
-  color: #ecf0f1; /* Light color for text */
+  background-color: #2c3e50;
+  color: #ecf0f1;
   position: fixed;
   top: 0;
   left: 0;
   padding: 30px 20px;
+  transition: width 0.3s ease-in-out;
 }
 
 .sidenav-header {
-  font-size: 2rem; /* Slightly larger font size for the header */
+  font-size: 2rem;
   margin-bottom: 40px;
   color: #fff;
-  border-bottom: 2px solid #ecf0f1; /* Lighter border for header */
+  border-bottom: 2px solid #ecf0f1;
   padding-bottom: 10px;
 }
 
 .sidenav-links {
-  list-style:none;
-  padding-top: 20px; /* Reduced padding for better layout */
+  list-style: none;
+  padding-top: 20px;
 }
 
 .sidenav-link {
   display: block;
-  color: #ecf0f1; /* Light color for link text */
+  color: #ecf0f1;
   text-decoration: none;
   padding: 18px 0;
   font-size: 1.2rem;
   border-radius: 10px;
-  border-bottom: 2px solid #34495e; /* Subtle border */
+  border-bottom: 2px solid #34495e;
   padding-left: 0px;
-  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+  transition: all 0.3s ease;
 }
 
 .sidenav-link:hover,
 .sidenav-link.active {
-  background-color: #4abaa4; /* New color for hover and active state */
-  padding-left: 10px; /* Add padding for smooth effect */
-  color: #fff; /* White color for text on hover */
+  background-color: #4abaa4;
+  padding-left: 10px;
+  color: #fff;
 }
 
 .sidenav-link svg {
-  margin-right: 20px; /* Increased spacing between icon and text */
+  margin-right: 20px;
 }
 
 .sidenav-link.active {
-  font-weight: bold; /* Make active link text bold */
-  color: #fff; /* Ensure the active link text is always white */
+  font-weight: bold;
+  color: #fff;
 }
 
+/* Responsive for Tablets */
+@media (max-width: 1024px) {
+  .sidenav {
+    width: 160px; /* Reduce width for better fit */
+    padding: 20px;
+  }
+
+  .sidenav-header {
+    font-size: 1.6rem;
+  }
+
+  .sidenav-link {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+
+  .sidenav-link svg {
+    margin-right: 15px;
+  }
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 70px; /* Compact sidebar */
+    padding: 15px;
+  }
+
+  .sidenav-header {
+    font-size: 1.4rem;
+    text-align: center;
+    display: none; /* Hide title on mobile */
+  }
+
+  .sidenav-links {
+    padding-top: 10px;
+  }
+
+  .sidenav-link {
+    font-size: 0;
+    text-align: center;
+    padding: 10px;
+    border-bottom: none;
+  }
+
+  .sidenav-link svg {
+    font-size: 24px; /* Show only icons */
+    margin: 0;
+  }
+}
