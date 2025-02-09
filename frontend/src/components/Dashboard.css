@@ -1,9 +1,8 @@
-/* ======= Base Styles (For Laptops & PCs, No Changes) ======= */
 .dashboard-container {
   display: flex;
   flex-direction: column;
   margin-left: 7cm;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensures the container takes up at least full height */
 }
 
 .dashboard-header {
@@ -52,12 +51,12 @@
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
-  flex-grow: 1;
+  flex-grow: 1; /* Ensures this section fills remaining space */
 }
 
 .line-chart {
   width: 48%;
-}
+ }
 
 .donut-chart {
   width: 30%;
@@ -76,8 +75,9 @@
   background-color: #a4a6a9;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 3px;
   transition: background-color 0.3s;
+  border-radius: 10px;
 }
 
 .filter-buttons button:hover {
@@ -88,7 +88,7 @@
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
-  flex-grow: 1;
+  flex-grow: 1; /* Ensures this section fills remaining space */
 }
 
 .best-customers,
@@ -106,7 +106,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
@@ -118,133 +119,4 @@ tr:hover {
 
 th {
   background-color: #cce0fb;
-}
-
-/* ======= Mobile & Tablet Responsive Design ======= */
-@media (max-width: 1024px) {
-  .dashboard-container {
-      margin-left: 0;
-      padding: 1rem;
-  }
-
-  .dashboard-header {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-  }
-
-  .date-filter {
-      justify-content: center;
-      margin: 10px 0;
-  }
-
-  .info-boxes {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .info-box {
-      width: 90%;
-      margin-bottom: 10px;
-  }
-
-  .charts {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .line-chart,
-  .donut-chart {
-      width: 90%;
-      margin-bottom: 20px;
-  }
-
-  .filter-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-  }
-
-  .filter-buttons button {
-      width: 5rem;
-      margin: 5px;
-  }
-
-  .best-data-container {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .best-customers,
-  .best-selling-items {
-      width: 90%;
-      margin-bottom: 20px;
-  }
-
-  .scrollable-table {
-      height: auto;
-      max-height: 250px;
-  }
-}
-
-/* For smaller mobile screens */
-@media (max-width: 768px) {
-  .dashboard-container {
-      padding: 0.5rem;
-  }
-
-  .dashboard-title {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .dashboard-icon {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 5px;
-  }
-
-  .info-boxes {
-      flex-direction: column;
-      gap: 10px;
-  }
-
-  .info-box {
-      width: 100%;
-  }
-
-  .charts {
-      flex-direction: column;
-  }
-
-  .line-chart, 
-  .donut-chart {
-      width: 100%;
-  }
-
-  .filter-buttons {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .filter-buttons button {
-      width: 90%;
-  }
-
-  .best-data-container {
-      flex-direction: column;
-  }
-
-  .best-customers, 
-  .best-selling-items {
-      width: 100%;
-  }
-
-  table {
-      font-size: 14px;
-  }
-
-  th, td {
-      padding: 8px;
-  }
 }

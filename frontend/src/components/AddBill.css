@@ -1,4 +1,3 @@
-/* ======= Base Styles (For Laptops & PCs, No Changes) ======= */
 .bill-container {
     padding: 20px;
     background-color: #f9f9f9;
@@ -6,7 +5,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-left: 7cm;
+    margin-left:7cm;
 }
 
 .shop-info {
@@ -126,7 +125,6 @@
         transform: translateX(-50%) translateY(0);
     }
 }
-
 .totals {
     margin-top: 30px;
     background-color: #f9f9f9;
@@ -204,81 +202,4 @@
 
 .submit-btn:hover {
     background-color: #218838;
-}
-
-/* ======= Responsive Design for Tablets & Mobile ======= */
-@media (max-width: 1024px) {
-    .bill-container {
-        margin-left: 0;
-        max-width: 100%;
-        padding: 15px;
-    }
-
-    .shop-info {
-        font-size: 1.1rem;
-    }
-
-    .form-group {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .form-group input {
-        width: 100%;
-    }
-
-    .items-table,
-    .totals-table {
-        font-size: 14px;
-    }
-
-    .items-table th,
-    .items-table td,
-    .totals-table td {
-        padding: 6px;
-    }
-
-    .items-table input,
-    .totals-table input {
-        width: 100%;
-    }
-
-    .add-item-btn, .submit-btn {
-        width: 100%;
-        padding: 12px;
-    }
-}
-
-/* Small Mobile Screens */
-@media (max-width: 768px) {
-    .bill-container {
-        padding: 10px;
-    }
-
-    .shop-info {
-        font-size: 1rem;
-    }
-
-    .form-group {
-        gap: 10px;
-    }
-
-    .items-table {
-        font-size: 12px;
-    }
-
-    .items-table th, 
-    .items-table td {
-        padding: 4px;
-    }
-
-    .totals-table td {
-        font-size: 0.9rem;
-    }
-
-    .add-item-btn,
-    .submit-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
 }
