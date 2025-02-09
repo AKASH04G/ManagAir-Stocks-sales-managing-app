@@ -1,4 +1,11 @@
 .shop-info-container {
+  margin: 20px auto; /* Centers it properly */
+  width: 90%; /* Makes it responsive */
+  max-width: 600px; /* Prevents it from being too wide */
+}
+
+.shop-info-container {
+  
   margin-left:7cm;
   max-width: 600px;
   padding: 20px;
@@ -159,4 +166,52 @@
   15% { opacity: 1; transform: translateY(0); }
   85% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-30px); }
+}
+@media (max-width: 1024px) {  /* Tablets */
+  .shop-info-container {
+    width: 80%;
+  }
+
+  .shop-info-buttons {
+    flex-direction: column; /* Stacks buttons vertically */
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {  /* Mobile Phones */
+  .shop-info-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .shop-info-field {
+    flex-direction: column; /* Stacks label and input */
+    align-items: flex-start;
+  }
+
+  .shop-info-field label {
+    width: 100%; /* Makes label full width */
+    margin-bottom: 5px;
+  }
+
+  .shop-info-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .shop-info-buttons button {
+    width: 100%; /* Buttons take full width on mobile */
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .icon, .icon1 {
+    font-size: 20px;
+    padding: 3px;
+  }
+
+  .shop-info-header h1 {
+    font-size: 22px;
+  }
 }
