@@ -49,16 +49,18 @@
 
 .charts {
   display: flex;
-  justify-content: space-around;
+  justify-content:center;
   margin-top: 30px;
   flex-grow: 1; /* Ensures this section fills remaining space */
 }
 
 .line-chart {
-  width: 48%;
+  width: 58%;
+ 
  }
 
 .donut-chart {
+  padding-left:50px;
   width: 30%;
 }
 
