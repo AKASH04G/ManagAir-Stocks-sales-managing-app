@@ -12,7 +12,7 @@ const AddBill = () => {
         tax: 0,
         discount: 0,
         totalAmount: 0,
-        paymentMethod: '',
+        paymentMethod: 'Cash',
     });
 
     const [shopInfo, setShopInfo] = useState({

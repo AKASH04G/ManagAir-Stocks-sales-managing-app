@@ -156,10 +156,10 @@ const SalesList = () => {
               </tbody>
             </table>
             <p><strong>Sub Total:</strong> ₹${sale.subTotal}</p>
-            <p><strong>Tax:</strong> ₹${sale.tax}</p>
-            <p><strong>Discount:</strong> ₹${sale.discount}</p>
+            <p><strong>Tax</strong> ${sale.tax}%</p>
+            <p><strong>Discount:</strong> ₹${sale.discount}%</p>
             <p><strong>Total Amount:</strong> ₹${sale.totalAmount}</p>
-            <p><strong>Payment Method:</strong> ${sale.paymentMethod}</p>
+            <p><strong>Payment Method:</strong> ${sale.paymentMethod||"Cash"}</p>
           </div>
         </body>
       </html>
@@ -242,10 +242,10 @@ const SalesList = () => {
                     ))}
                   </ul>
                   <p><strong>Sub Total:</strong> ₹{sale.subTotal}</p>
-                  <p><strong>Tax:</strong> ₹{sale.tax}</p>
-                  <p><strong>Discount:</strong> ₹{sale.discount}</p>
+                  <p><strong>Tax:</strong> {sale.tax}%</p>
+                  <p><strong>Discount:</strong> {sale.discount}%</p>
                   <p><strong>Total Amount:</strong> ₹{sale.totalAmount}</p>
-                  <p><strong>Payment Method:</strong> {sale.paymentMethod}</p>
+                  <p><strong>Payment Method:</strong> {sale.paymentMethod||"Cash"}</p>
                   <button onClick={() => handlePrint(sale)}>Print Bill</button>
                 </div>
               )}
