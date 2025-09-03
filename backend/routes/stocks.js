@@ -65,7 +65,7 @@ router.post('/add', auth, async (req, res) => {
 // Get all stocks for the logged-in user with pagination
 router.get('/', auth, async (req, res) => {
     try {
-        const { page = 1, limit = 10 } = req.query;
+        const { page = 1, limit = 1000} = req.query;
 
         const stocks = await Stock.find({ userId: req.user.id })
             .limit(limit * 1)
